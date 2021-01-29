@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SaturdayProject16"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="52.043">
+    <properties></properties>
+
+
+
+            <testcase
+                name="updateFirstName"
+                time="23.109"
+                classname="Project16">
+            </testcase>
+            <testcase
+                name="updateDocumentNumber"
+                time="1.957"
+                classname="Project16">
+            </testcase>
+            <testcase
+                name="deletingEmployee"
+                time="2.786"
+                classname="Project16">
+            </testcase>
+            <testcase
+                name="UpdateLastName"
+                time="10.898"
+                classname="Project16">
+            </testcase>
+            <testcase
+                name="navigate"
+                time="5.791"
+                classname="Project16">
+            </testcase>
+            <testcase
+                name="createNewEmployee"
+                time="7.502"
+                classname="Project16">
+            </testcase>
+</testsuite>

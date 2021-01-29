@@ -1,0 +1,11 @@
+
+
+//span[text()='Messaging']//following::span[text()='Dashboard']
+//span[text()='Messaging']//preceding::span[contains(text(),'Dashboard')]
+//span[text()='Messaging']//following::span[contains(text(),'Dashboard')]
+//span[text()='Messaging']//following-sibling::fa-icon
+//span[text()='Messaging']//preceding-sibling::fa-icon
+//span[text()='School Setup']//ancestor::div
+//*[contains(@class,'group-items')]//a
+//*[contains(@class,'group-items')]/../a
+//*[contains(@class,'group-items')]/../../../../../../../../div/div/img

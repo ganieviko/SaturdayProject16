@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SaturdayProject16"
+           tests="9"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="79.289">
+    <properties></properties>
+
+
+
+            <testcase
+                name="test1CreateNewEmployee"
+                time="8.332"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test3UpdateFirstName"
+                time="23.842"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test6UpdateAnyDataChanged"
+                time="19.078"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test7cannotHaveSameID"
+                time="1.813"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test5UpdateDocumentNumber"
+                time="2.562"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test4UpdateLastName"
+                time="11.325"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test2DeletingEmployee"
+                time="2.887"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="test7cannotHaveSameID"
+                time="2.748"
+                classname="DemoVersion">
+            </testcase>
+            <testcase
+                name="navigate"
+                time="6.702"
+                classname="DemoVersion">
+            </testcase>
+</testsuite>

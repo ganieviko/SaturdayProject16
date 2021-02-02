@@ -70,11 +70,7 @@ public class DemoVersion extends BaseTest {
         createNewEmplPOM.fillingUpDocumentNumber(documentNumber);
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
         driver.findElement(Selectors.documentType).click();
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        createNewEmplPOM.choseDocumentType();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save botton is not clikeable");
         driver.findElement(Selectors.saveButton).click();
         waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.humanResources), "Human resource menue not visible");
@@ -100,10 +96,8 @@ public class DemoVersion extends BaseTest {
         String deleteButtonEmployee = "//td[text()='Artur  Ganiev']//following::ms-delete-button";
         waitFor(ExpectedConditions.presenceOfElementLocated(By.xpath(deleteButtonEmployee)));
         driver.findElement(By.xpath(deleteButtonEmployee)).click();
-
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']")));
         driver.findElement(By.cssSelector("[type='submit']")).click();
-
         Thread.sleep(2000);
         List<WebElement> rows = driver.findElements(Selectors.rowWithName);
         for (WebElement row : rows){
@@ -127,11 +121,7 @@ public class DemoVersion extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.documentNumber)).sendKeys(documentNumber);
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
         driver.findElement(Selectors.documentType).click();
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        createNewEmplPOM.choseDocumentType();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save botton is not clikeable");
         driver.findElement(Selectors.saveButton).click();
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.humanResources), "Human resource menue not visible");
@@ -140,7 +130,7 @@ public class DemoVersion extends BaseTest {
         driver.findElement(Selectors.employees).click();
         waitFor(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert), "Did not work");
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.goToTheLastPage),"go to the last page element was not found");
-        createNewEmplPOM.clickGoToLastPage(); //TODO: change it after !!!!!!
+        createNewEmplPOM.clickGoToLastPage();
         driver.findElement(By.xpath("//td[text()='Artur  Ganiev']//following::ms-edit-button")).click();
         String nameAfterChange = "Artur2";
         wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.firstNameEmployee)).clear();
@@ -194,7 +184,6 @@ public class DemoVersion extends BaseTest {
         driver.findElement(Selectors.documentNumber).sendKeys(documentNumberUpdate);
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save botton is not clikeable");
         driver.findElement(Selectors.saveButton).click();
-
         waitFor(ExpectedConditions.textToBePresentInElementLocated(Selectors.alert, "Employee successfully updated"));
         String alertText = driver.findElement(Selectors.alert).getText();
         System.out.println(alertText);
@@ -239,11 +228,7 @@ public class DemoVersion extends BaseTest {
         createNewEmplPOM.fillingUpDocumentNumber(documentType);
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
         driver.findElement(Selectors.documentType).click();
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        createNewEmplPOM.choseDocumentType();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");
         driver.findElement(Selectors.saveButton).click();
         waitFor(ExpectedConditions.textToBePresentInElementLocated(Selectors.alert, "Employee successfully created"));
@@ -267,15 +252,10 @@ public class DemoVersion extends BaseTest {
         createNewEmplPOM.fillingUpEmployeeID("Document8");
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
         driver.findElement(Selectors.documentType).click();
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        createNewEmplPOM.choseDocumentType();
         createNewEmplPOM.fillingUpDocumentNumber("Document2");
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");
         driver.findElement(Selectors.saveButton).click();
-
         waitFor(ExpectedConditions.textToBePresentInElementLocated(Selectors.alert, "Artur2 Ganiev2 already has such document number or PIN"));
         String alertText = driver.findElement(Selectors.alert).getText();
         System.out.println(alertText);
@@ -319,12 +299,10 @@ public class DemoVersion extends BaseTest {
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentNumber), "");
         createNewEmplPOM.fillingUpDocumentNumber(documentNumber);
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        driver.findElement(Selectors.documentType).click();   //TODO : check it
+
+        createNewEmplPOM.choseDocumentType();
+
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");
         driver.findElement(Selectors.saveButton).click();
         Thread.sleep(2000);
@@ -406,7 +384,7 @@ public class DemoVersion extends BaseTest {
     }
     @Test(dependsOnMethods = "test18photoChanged")
     public void test19DeletePicture() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.photoButton)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Delete ']"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Yes ']"))).click();
@@ -430,10 +408,6 @@ public class DemoVersion extends BaseTest {
         driver.findElement(Selectors.goToTheLastPage).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[text()='Artur9  Ganiev9']//following::ms-delete-button"))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Yes ']"))).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert));
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[text()='123445  Ganiev13']//following::ms-delete-button"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Yes ']"))).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert));
 

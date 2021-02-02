@@ -39,7 +39,6 @@ public class CreateNewEmplPOM {
     }
 
     public void choseDocumentType() throws AWTException {
-       // driver.findElement(this.getDocumentType).click();
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);

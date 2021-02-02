@@ -1,0 +1,12 @@
+.idea
+target
+test-output
+*.iml
+**/*Student*
+**/*student*
+main
+xmlFiles
+*MyConstance
+**task
+debug.log
+**DemoVersion

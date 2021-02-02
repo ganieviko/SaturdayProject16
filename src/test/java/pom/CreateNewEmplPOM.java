@@ -7,8 +7,8 @@ public class CreateNewEmplPOM {
     WebDriver driver;
 
 
-    public  By firstNameEmployee = By.cssSelector("#ms-text-field-2:nth-child(1) input");
-    public  By lastNameEmployee = By.cssSelector("#ms-text-field-3:nth-child(1) input");
+    public  By firstNameEmployee = By.cssSelector("ms-text-field[formcontrolname='firstName']>input");
+    public  By lastNameEmployee = By.cssSelector("ms-text-field[formcontrolname='lastName']>input");
     public  By employeeID = By.cssSelector("mat-form-field[class]:nth-child(1) input[data-placeholder='Employee ID']");
     public  By documentType = By.xpath("//span[text()='Document Type']");
     public  By documentNumber = By.cssSelector("[data-placeholder='Document Number']");

@@ -51,26 +51,17 @@ public class Project16 extends BaseTest{
     }
     @Test()
     public void navigate() {
-        waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.humanResources), "Human resource menu not visible");
         navigatePOM.clickingHumanResources();
-        waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees));
         navigatePOM.clickingEmployees();
-        waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.plusButton));
         navigatePOM.clickingPlusButton();
     }
 
     @Test(dependsOnMethods = "navigate", dataProvider = "employeeName")
     public void test1CreateNewEmployee(String firstName, String lastName, String id, String documentNumber) throws AWTException {
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.firstNameEmployee), "");
         createNewEmplPOM.fillingUpFirsName(firstName);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.lastNameEmployee), "");
         createNewEmplPOM.fillingUpLastName(lastName);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.employeeID), "");
         createNewEmplPOM.fillingUpEmployeeID(id);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentNumber), "");
         createNewEmplPOM.fillingUpDocumentNumber(documentNumber);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();
         createNewEmplPOM.choseDocumentType();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save botton is not clikeable");
         driver.findElement(Selectors.saveButton).click();
@@ -78,8 +69,6 @@ public class Project16 extends BaseTest{
         navigatePOM.clickingHumanResources();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees));
         navigatePOM.clickingEmployees();
-        waitFor(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert), "Did not work");
-        waitFor(ExpectedConditions.elementToBeClickable(Selectors.goToTheLastPage),"go to the last page element was not found");
         createNewEmplPOM.clickGoToLastPage();
 
         List<WebElement> rows = driver.findElements(Selectors.rowWithName);
@@ -114,14 +103,11 @@ public class Project16 extends BaseTest{
 
     @Test(dependsOnMethods = "test2DeletingEmployee", dataProvider = "employeeName")
     public void test3UpdateFirstName(String firstName, String lastName, String id, String documentNumber) throws AWTException {
-        wait.until(ExpectedConditions.presenceOfElementLocated(Selectors.plusButton));
-        driver.findElement(Selectors.plusButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.firstNameEmployee)).sendKeys(firstName);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.lastNameEmployee)).sendKeys(lastName);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-placeholder='Employee ID']"))).sendKeys(id);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.documentNumber)).sendKeys(documentNumber);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();
+        navigatePOM.clickingPlusButton();
+        createNewEmplPOM.fillingUpFirsName(firstName);
+        createNewEmplPOM.fillingUpLastName(lastName);
+        createNewEmplPOM.fillingUpEmployeeID(id);
+        createNewEmplPOM.fillingUpDocumentNumber(documentNumber);
         createNewEmplPOM.choseDocumentType();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save botton is not clikeable");
         driver.findElement(Selectors.saveButton).click();
@@ -197,8 +183,6 @@ public class Project16 extends BaseTest{
         navigatePOM.clickingHumanResources();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees));
         navigatePOM.clickingEmployees();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert));
-        waitFor(ExpectedConditions.elementToBeClickable(Selectors.goToTheLastPage),"go to the last page element was not found");
         createNewEmplPOM.clickGoToLastPage();
         String editButtonForAnyUpdate = "//*[contains(text(),'Artur')]//following::ms-edit-button";
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(editButtonForAnyUpdate)));
@@ -207,7 +191,6 @@ public class Project16 extends BaseTest{
         driver.findElement(Selectors.employeeID).sendKeys("IDChanged");
         waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.humanResources), "Human resource menu not visible");
         navigatePOM.clickingHumanResources();
-        waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees));
         navigatePOM.clickingEmployees();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert));
         wait.until(ExpectedConditions.elementToBeClickable(Selectors.goToTheLastPage));
@@ -215,21 +198,16 @@ public class Project16 extends BaseTest{
     }
     @Test(dependsOnMethods = "test6UpdateAnyDataChanged", dataProvider = "employeeWithSameID")
     public void test7cannotHaveSameID(String firstName, String secondName, String id, String documentType) throws AWTException {
-        waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.humanResources), "Human resource menu not visible");
         navigatePOM.clickingHumanResources();
-        waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees));
         navigatePOM.clickingEmployees();
-        waitFor(ExpectedConditions.visibilityOfElementLocated(navigatePOM.plusButton));
         navigatePOM.clickingPlusButton();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.firstNameEmployee)).sendKeys(firstName);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Selectors.lastNameEmployee)).sendKeys(secondName);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.employeeID));
+
+        createNewEmplPOM.fillingUpFirsName(firstName);
+        createNewEmplPOM.fillingUpLastName(secondName);
         createNewEmplPOM.fillingUpEmployeeID(id);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType));
         createNewEmplPOM.fillingUpDocumentNumber(documentType);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();
         createNewEmplPOM.choseDocumentType();
+
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");
         driver.findElement(Selectors.saveButton).click();
         waitFor(ExpectedConditions.textToBePresentInElementLocated(Selectors.alert, "Employee successfully created"));
@@ -252,7 +230,6 @@ public class Project16 extends BaseTest{
         createNewEmplPOM.fillingUpLastName("Ganiev8");
         createNewEmplPOM.fillingUpEmployeeID("Document8");
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();
         createNewEmplPOM.choseDocumentType();
         createNewEmplPOM.fillingUpDocumentNumber("Document2");
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");
@@ -300,8 +277,6 @@ public class Project16 extends BaseTest{
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentNumber), "");
         createNewEmplPOM.fillingUpDocumentNumber(documentNumber);
         waitFor(ExpectedConditions.visibilityOfElementLocated(Selectors.documentType),"Document ID locator is not found");
-        driver.findElement(Selectors.documentType).click();   //TODO : check it
-
         createNewEmplPOM.choseDocumentType();
 
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.saveButton),"Save button is not clickable");

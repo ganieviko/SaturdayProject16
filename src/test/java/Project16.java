@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class Project16 extends BaseTest{
     @Parameters({"username", "password"})
     @BeforeClass
     public void setUpAndLogin(@Optional("daulet2030@gmail.com")String uname, @Optional("TechnoStudy123@")String upassword) {
-        System.setProperty("webdriver.chrome.driver", MyConstance.CHROME_DRIVER_PATH);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 10);

@@ -29,6 +29,8 @@ public class Project16 extends BaseTest{
     BaseTest baseTest;
 
 
+
+
     @Parameters({"username", "password"})
     @BeforeClass
     public void setUpAndLogin(@Optional("daulet2030@gmail.com")String uname, @Optional("TechnoStudy123@")String upassword) {
@@ -132,9 +134,9 @@ public class Project16 extends BaseTest{
         driver.findElement(Selectors.humanResources).click();
         waitFor(ExpectedConditions.elementToBeClickable(Selectors.employees), "Employee element is not visible");
         driver.findElement(Selectors.employees).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[role='alertdialog']")));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[aria-label='Last Page']")));
-        driver.findElement(By.cssSelector("button[aria-label='Last Page']")).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(Selectors.alert));
+        wait.until(ExpectedConditions.elementToBeClickable(Selectors.goToTheLastPage));
+        driver.findElement(Selectors.goToTheLastPage).click();
 
     }
 
